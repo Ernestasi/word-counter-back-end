@@ -24,6 +24,11 @@ public class CounterController {
         return letterCounterService.changeRange(rangeIndex, min, max);
     }
 
+    @GetMapping(path = "/limit")
+    public ResponseEntity<Integer> getLimit() {
+        return letterCounterService.getLimit();
+    }
+
     @GetMapping(path = "/ranges")
     public ResponseEntity<Map<Integer, Integer[]>> getRanges() {
         return letterCounterService.getRanges();

@@ -21,4 +21,6 @@ public interface LetterCounterService {
     ResponseEntity<String> changeRange(Integer rangeIndex, Integer min, Integer max);
 
     ResponseEntity<Map<Integer, Integer[]>> getRanges();
+
+    ResponseEntity<Integer> getLimit();
 }

@@ -195,6 +195,11 @@ public class LetterCounterServiceImpl implements LetterCounterService {
         return ResponseEntity.status(HttpStatus.OK).body(rangeMap);
     }
 
+    @Override
+    public ResponseEntity<Integer> getLimit() {
+        return ResponseEntity.status(HttpStatus.OK).body(LIMIT);
+    }
+
     private String fixWord(String word) {
         StringBuilder stringBuilder = new StringBuilder();
         for (byte b : word.getBytes()) {
