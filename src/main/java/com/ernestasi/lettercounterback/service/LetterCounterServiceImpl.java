@@ -15,23 +15,23 @@ import java.util.stream.Collectors;
 public class LetterCounterServiceImpl implements LetterCounterService {
 
     private static final CharMatcher CHARACTERS = CharMatcher.anyOf("ABCDEFGHIJKLMNOPQWRTUVWXYZabcdefghijklmnopqrstuvwxyzĄČĘĖĮŠŲŪŽąčęėįšųūž");
-    private List<String> fileNames = new ArrayList<>();
+    private final List<String> fileNames = new ArrayList<>();
     private Integer LIMIT = 50;
-    private String fromLetter1 = "a";
-    private String toLetter1 = "g";
-    private String fromLetter2 = "h";
-    private String toLetter2 = "n";
-    private String fromLetter3 = "o";
-    private String toLetter3 = "u";
-    private String fromLetter4 = "v";
-    private String toLetter4 = "z";
-    private HashMap<String, Integer> wordMap = new HashMap();
+    private final String fromLetter1 = "a";
+    private final String toLetter1 = "g";
+    private final String fromLetter2 = "h";
+    private final String toLetter2 = "n";
+    private final String fromLetter3 = "o";
+    private final String toLetter3 = "u";
+    private final String fromLetter4 = "v";
+    private final String toLetter4 = "z";
+    private final HashMap<String, Integer> wordMap = new HashMap();
     private HashMap<String, Integer> agWordMap = new HashMap();
     private HashMap<String, Integer> hnWordMap = new HashMap();
     private HashMap<String, Integer> ouWordMap = new HashMap();
     private HashMap<String, Integer> vzWordMap = new HashMap();
 
-    private Map<Integer, Integer[]> rangeMap = createRangeMap();
+    private final Map<Integer, Integer[]> rangeMap = createRangeMap();
 
     private Map<Integer, Integer[]> createRangeMap() {
         HashMap<Integer, Integer[]> map = new HashMap<>();
@@ -41,7 +41,7 @@ public class LetterCounterServiceImpl implements LetterCounterService {
         map.put(1, values2);
         Integer[] values3 = {111, 117};
         map.put(2, values3);
-        Integer[] values4 = {118, 125};
+        Integer[] values4 = {118, 122};
         map.put(3, values4);
         return map;
     }
@@ -174,8 +174,8 @@ public class LetterCounterServiceImpl implements LetterCounterService {
     @Override
     public ResponseEntity<String> changeRange(Integer rangeIndex, Integer min, Integer max) {
         //cause range from eg. "a" to "b" will include only word "a" and will not include "apple"
-        if (min-max == 0) {
-            max = max+1;
+        if (min - max == 0) {
+            max = max + 1;
         }
         Integer[] range = {min, max};
         rangeMap.put(rangeIndex, range);

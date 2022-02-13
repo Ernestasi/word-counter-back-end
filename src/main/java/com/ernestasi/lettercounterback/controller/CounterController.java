@@ -18,13 +18,13 @@ public class CounterController {
     private final LetterCounterService letterCounterService;
 
     @GetMapping(path = "/change-range")
-    public ResponseEntity<String> getFiles(@RequestParam(name ="rangeIndex") Integer rangeIndex,
-                                           @RequestParam(name ="min") Integer min,
-                                           @RequestParam(name ="max") Integer max ) {
+    public ResponseEntity<String> getFiles(@RequestParam(name = "rangeIndex") Integer rangeIndex,
+                                           @RequestParam(name = "min") Integer min,
+                                           @RequestParam(name = "max") Integer max) {
         return letterCounterService.changeRange(rangeIndex, min, max);
     }
 
-    @GetMapping(path = "/limit")
+    @GetMapping(path = "/limit-value")
     public ResponseEntity<Integer> getLimit() {
         return letterCounterService.getLimit();
     }
@@ -34,22 +34,22 @@ public class CounterController {
         return letterCounterService.getRanges();
     }
 
-    @GetMapping(path="/change-limit")
-    public ResponseEntity<String> getFiles(@RequestParam(name ="limit") Integer limit) {
+    @GetMapping(path = "/change-limit")
+    public ResponseEntity<String> getLimit(@RequestParam(name = "limit") Integer limit) {
         return letterCounterService.changeLimit(limit);
     }
 
-    @GetMapping(path="/file-names")
+    @GetMapping(path = "/file-names")
     public List<String> getFiles() {
         return letterCounterService.getFileNames();
     }
 
-    @PutMapping(path="/clear-data")
+    @PutMapping(path = "/clear-data")
     public ResponseEntity<String> clearData() {
         return letterCounterService.claerData();
     }
 
-    @GetMapping(path="/maps")
+    @GetMapping(path = "/maps")
     public List<Map<String, Integer>> getMaps() {
         return letterCounterService.getAllMaps();
     }
@@ -60,6 +60,5 @@ public class CounterController {
             throw new BadRequestDataException("file is empty");
         }
         return letterCounterService.addFile(file);
-//        return ResponseEntity.status(HttpStatus.OK).body();
     }
 }
